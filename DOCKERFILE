@@ -1,0 +1,10 @@
+FROM clefos
+
+COPY local /usr/local
+
+RUN yum -y update && \
+    yum -y install fio stress-ng && \
+    mkdir -m 777 /fio && \
+    ldconfig /usr/local/lib
+
+CMD ["busy"]
